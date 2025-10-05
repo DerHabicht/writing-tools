@@ -1,0 +1,43 @@
+---
+type: outline
+title: Sample Short Outline
+author: University of Chicago
+office: UC/CMOS
+contact: (555) 555-1234
+typist: cmos
+date: 2017-01-01
+comment: Sample short outline found on p. 415 of CMOS 17.
+---
+cmos:
+    type: manual
+    title: The Chicago Manual of Style
+    author: University of Chicago
+    date: 2017
+    bibdata:
+        organization: University of Chicago
+        publisher: University of Chicago Press
+        address: Chicago, IL
+    notes:
+        -   citation: p. 416
+            quote: >-
+                In a list with fewer levels, one might dispense with the capital roman numerals and capital letters and
+                instead begin with arabic numerals. What is important is that readers see at a glance the level to which
+                each item belongs. Note that each division and subdivision should normally contain at least two items.
+            remarks:
+                - This means "short" outlines should be supported
+                - Short papers start with arabic numerals instead of capital roman numerals
+---
+
+1. Punctuation
+    a. Using commas appropriately
+    b. Deleting unnecessary quotation marks
+    c. Distinguishing colons from semicolons
+2. Spelling
+    a. Using a dictionary appropriately
+    b. Recognizing homonyms
+    c. Hyphenating correctly
+3. Syntax
+    a. Matching verb to subject
+    b. Recognizing and eliminating misplaced modifiers
+    c. Distinguishing phrases from clauses while singing
+       the "Conjunction Junction" song
