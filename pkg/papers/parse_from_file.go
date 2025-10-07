@@ -22,7 +22,7 @@ func ParseFromFile(file files.File) (Paper, error) {
 		return nil, errors.New("file header not found")
 	}
 
-	ydocs := bytes.Split(res[1], []byte("---"))
+	ydocs := bytes.Split(res[1], []byte("\n---"))
 
 	pm := PaperMeta{}
 	err = yaml.Unmarshal(ydocs[0], &pm)

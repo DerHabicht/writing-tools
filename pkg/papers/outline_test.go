@@ -121,6 +121,20 @@ const expectedShortLaTeXOutput = `\documentclass[outline,short]{usafpaper}
     \item Short papers start with arabic numerals instead of capital roman numerals
 \end{itemize}
 
+\subsection*{Starship Troopers~\autocite{starship_troopers}}
+
+\subsubsection*{ch. 2}
+
+\begin{quote}
+    Anyone who clings to the historically untrue---and thoroughly immoral---doctrine that 'violence never settles anything' I would advise to conjure up the ghosts of Napoleon Bonaparte and of the Duke of Wellington and let them debate it. The ghost of Hitler could referee, and the jury might well be the Dodo, the Great Auk, and the Passenger Pigeon. Violence, naked force, has settled more issues in history than has any other factor, and the contrary opinion is wishful thinking at its worst. Breeds that forget this basic truth have always paid for it with their lives and freedoms.
+\end{quote}
+
+\subsubsection*{ch. 12}
+
+\begin{quote}
+    Morals---all correct moral laws---derive from the instinct to survive. Moral behavior is survival behavior above the individual level.
+\end{quote}
+
 \pagebreak
 
 \printbibliography
@@ -137,6 +151,12 @@ const expectedBibTeXOutput = `
 	organization = {University of Chicago},
 	publisher = {University of Chicago Press},
 }
+
+@book(starship_troopers,
+	title = {Starship Troopers},
+	author = {Robert A. Heinlein},
+	date = {1959},
+	publisher = {G.P. Putnam and Sons},
 `
 
 func generateExpectedLongOutline() *Outline {
@@ -222,6 +242,25 @@ func generateExpectedShortOutline() *Outline {
 						"This means \"short\" outlines should be supported",
 						"Short papers start with arabic numerals instead of capital roman numerals",
 					},
+				},
+			},
+		},
+		"starship_troopers": {
+			RefType: "book",
+			Title:   "Starship Troopers",
+			Author:  "Robert A. Heinlein",
+			Date:    "1959",
+			Bibdata: map[string]string{
+				"publisher": "G. P. Putnam's Sons",
+			},
+			Notes: []Note{
+				{
+					Citation: "ch. 2",
+					Quote:    "Anyone who clings to the historically untrue---and thoroughly immoral---doctrine that 'violence never settles anything' I would advise to conjure up the ghosts of Napoleon Bonaparte and of the Duke of Wellington and let them debate it. The ghost of Hitler could referee, and the jury might well be the Dodo, the Great Auk, and the Passenger Pigeon. Violence, naked force, has settled more issues in history than has any other factor, and the contrary opinion is wishful thinking at its worst. Breeds that forget this basic truth have always paid for it with their lives and freedoms.",
+				},
+				{
+					Citation: "ch. 12",
+					Quote:    "Morals---all correct moral laws---derive from the instinct to survive. Moral behavior is survival behavior above the individual level.",
 				},
 			},
 		},
@@ -314,4 +353,10 @@ func TestBibliography(t *testing.T) {
 	assert.Regexp(t, `    address = \{Chicago, IL\},`, bibtex)
 	assert.Regexp(t, `    organization = \{University of Chicago\},`, bibtex)
 	assert.Regexp(t, `    publisher = \{University of Chicago Press\},`, bibtex)
+
+	assert.Regexp(t, `@book\{starship_troopers,`, bibtex)
+	assert.Regexp(t, `    title = \{Starship Troopers\},`, bibtex)
+	assert.Regexp(t, `    author = \{Robert A. Heinlein\},`, bibtex)
+	assert.Regexp(t, `    date = \{1959\},`, bibtex)
+	assert.Regexp(t, `    publisher = \{G. P. Putnam's Sons\},`, bibtex)
 }
