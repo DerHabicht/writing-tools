@@ -1,0 +1,60 @@
+---
+paper_type: Bullet Background Paper
+title: Writing Bullet Background Papers
+author: Ms. McKitt
+office: SAASS/AS
+contact: (555) 555-1234
+typist: cdb
+date: 2014-06-20
+comment: Sample bullet background paper found on p. 224 of AFH 33-337 (the Tongue & Quill).
+---
+afh33-337:
+    type: manual
+    title: AFH 33-337
+    author: Department of the Air Force
+    date: 2015-05-27
+    bibdata:
+        subtitle: The Tongue and Quill
+        organization: United States Air Force
+        publisher: Department of the Air Force
+        address: Washington, DC
+...
+
+# Purpose\footcite[p.224]{afh33-337}
+
+Discuss the functions, format, and tips for building a Bullet Background Paper (BBP). The purpose statement informs readers on both the purpose and main points of the paper. It may be a single sentence, as in this example, or a short paragraph in length.
+
+# Functions
+
+- Concise background information on a single idea
+- Summary of a staff package
+- Accomplishment Summary
+- Chronological of a problem
+- Support for an attached paper
+- Program information
+- Information to provide a response to just about any task
+
+# Format
+
+- Flexible to save space and/or conform to user's needs
+- Main ideas may be presented as headings (e.g. FUNCTION, FORMAT, TIPS) or as subordinate ideas to broader generic headings (e.g. PURPOSE, DISCUSSION, FINDINGS, RECOMMENDATIONS) using dashes and indentation.
+- Secondary items follow with a single dash; tertiary and further subordinate items follow with multiple indented dashes. Any item can be as short as a word or as long as several sentences.
+- Page setup
+-- Title: centered; all capital letters; long titles wrap single-spaced under third line (FYI: Use manual line breaks for long title readability or to visually balance the lines.)
+-- Margins: One (1) inch all around
+-- Dashes: single before major thoughts; multiple for subordinate thoughts
+-- Line spacing and text wrapping: single-space within bullets and double-space between bullets; wrap bullets as in this example
+-- Punctuation: Normal rules apply for complete sentences and paragraphs; bullets may have internal punctuation but do not require closing punctuation
+-- Identification line: Format the same as for the Point Paper and place only on the first page, one (1) inch from bottom, flush left; *alternatively placed in the footer, one half (1/2) inch from the bottom, flush left*
+-- Page numbering (if longer than one page): Place the page number for page 2 onwards at the top of page, one-half inch from the top and flush with the right margins
+-- Classified content: See DOD 5200.1-R/AFI 31-401 to prepare classified Papers
+
+# Tips
+
+- Write the BBP according to the knowledge level of the expected readers
+- Emphasize main points by using them as headings or short bullets. If additional information is needed, refer to it in the text of the BBP and attach the referenced documents.
+- Strive to minimize the length to communicate quickly with impact
+
+# Conclusion
+
+The BBP serves many purposes and is no longer than it needs to be to convey the message. The formats for many of the BBP elements are the same as they are for other Air Force papers. End with recommendations or conclusions that bring the discussion to a close.

@@ -10,7 +10,7 @@ import (
 )
 
 func ParseFromFile(file files.File) (Paper, error) {
-	re := regexp.MustCompile(`(?s)---(.+)---`)
+	re := regexp.MustCompile(`(?s)---(.+)\.\.\.`)
 
 	raw, err := file.ReadFile()
 	if err != nil {
@@ -42,10 +42,13 @@ func ParseFromFile(file files.File) (Paper, error) {
 	body := re.ReplaceAll(raw, make([]byte, 0))
 
 	switch pm.PaperType {
-	case TalkingPaper:
-		panic("not implemented")
-	case BulletBackgroundPaper:
-		panic("not implemented")
+	case PointPaper, TalkingPaper, BulletBackgroundPaper:
+		paper := NewBulletPaper(pm, refs)
+		err = paper.Parse(body)
+		if err != nil {
+			return nil, errors.WithStack(err)
+		}
+		return paper, nil
 	case OutlinePaper:
 		outline := NewOutline(pm, refs)
 		err = outline.Parse(body)
@@ -56,4 +59,8 @@ func ParseFromFile(file files.File) (Paper, error) {
 	default:
 		panic(errors.Errorf("invalid paper type: %v", pm.PaperType))
 	}
+}
+
+func ParseMarkDown(s string) (string, error) {
+	panic("implement me!")
 }

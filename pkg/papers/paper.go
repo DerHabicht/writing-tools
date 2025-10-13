@@ -15,4 +15,5 @@ type Paper interface {
 	Parse(b []byte) error
 	Points() []Point
 	LaTeX() string
+	BibTeX() string
 }

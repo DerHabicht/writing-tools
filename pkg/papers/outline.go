@@ -34,6 +34,7 @@ func (o *Outline) AddReference(k string, r Reference) {
 	if o.references == nil {
 		o.references = make(map[string]Reference)
 	}
+	
 	o.references[k] = r
 }
 
@@ -104,7 +105,7 @@ func latexOutlineLists(points []Point) string {
 
 	latex := listIndent + `\begin{outline}` + "\n"
 	for _, point := range points {
-		latex += itemIndent + `\item ` + point.Text() + "\n"
+		latex += itemIndent + `\item ` + point.RenderLaTeX() + "\n"
 
 		if len(point.Subpoints()) > 0 {
 			latex += latexOutlineLists(point.Subpoints())
@@ -123,7 +124,7 @@ func (o *Outline) BibTeX() string {
 
 	bibtex := ""
 	for k, v := range o.references {
-		bibtex += v.BibTeX(k)
+		bibtex += v.RenderBibTeX(k)
 	}
 
 	return bibtex
@@ -163,7 +164,7 @@ func (o *Outline) LaTeX() string {
 		body += "\n" + `\pagebreak` + "\n"
 		body += "\n" + `\section*{Notes}` + "\n\n"
 		for k, v := range o.references {
-			body += v.LaTeX(k)
+			body += v.RenderLaTeX(k)
 		}
 
 		body += `\pagebreak` + "\n\n"

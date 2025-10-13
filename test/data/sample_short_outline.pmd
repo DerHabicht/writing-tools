@@ -1,5 +1,5 @@
 ---
-type: outline
+paper_type: outline
 title: Sample Short Outline
 author: University of Chicago
 office: UC/CMOS
@@ -46,7 +46,7 @@ starship_troopers:
             quote: >-
                 Morals---all correct moral laws---derive from the instinct to survive. Moral behavior is survival
                 behavior above the individual level.
----
+...
 
 1. Punctuation
     a. Using commas appropriately

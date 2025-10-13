@@ -13,7 +13,7 @@ type Reference struct {
 	Notes   []Note            `yaml:"notes"`
 }
 
-func (r *Reference) BibTeX(key string) string {
+func (r *Reference) RenderBibTeX(key string) string {
 	bibtex := fmt.Sprintf(`@%s{%s,%s`, r.RefType, key, "\n")
 
 	bibtex += `    title = {` + r.Title + "},\n"
@@ -29,11 +29,11 @@ func (r *Reference) BibTeX(key string) string {
 	return bibtex
 }
 
-func (r *Reference) LaTeX(key string) string {
+func (r *Reference) RenderLaTeX(key string) string {
 	latex := fmt.Sprintf(`\subsection*{%s~\autocite{%s}}`, r.Title, key) + "\n\n"
 
 	for _, v := range r.Notes {
-		latex += v.LaTeX(key)
+		latex += v.RenderLaTeX(key)
 	}
 
 	return latex
@@ -45,7 +45,7 @@ type Note struct {
 	Remarks  []string `yaml:"remarks"`
 }
 
-func (n *Note) LaTeX(refKey string) string {
+func (n *Note) RenderLaTeX(refKey string) string {
 	latex := `\subsubsection*{` + n.Citation + "}\n\n"
 
 	if n.Quote != "" {

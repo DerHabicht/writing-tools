@@ -2,11 +2,10 @@ package papers
 
 import (
 	"github.com/fxtlabs/date"
-
 )
 
 type PaperMeta struct {
-	PaperType PT        `yaml:"type"`
+	PaperType PT        `yaml:"paper_type"`
 	Title     string    `yaml:"title"`
 	Author    string    `yaml:"author"`
 	Office    string    `yaml:"office"`
