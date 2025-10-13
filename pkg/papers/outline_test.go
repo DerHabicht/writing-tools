@@ -1,14 +1,17 @@
 package papers
 
 import (
+	"os"
+	"path/filepath"
 	"testing"
 
 	"github.com/ag7if/go-files"
+	"github.com/ag7if/go-latex"
 	"github.com/fxtlabs/date"
 	"github.com/stretchr/testify/assert"
 )
 
-const expectedLongLaTeXOutput = `\documentclass[outline]{usafpaper}
+const expectedLongOutlineLaTeXOutput = `\documentclass[outline]{usafpaper}
 
 \title{Sample Outline}
 \date{2017-01-01}
@@ -66,7 +69,7 @@ const expectedLongLaTeXOutput = `\documentclass[outline]{usafpaper}
 \end{document}
 `
 
-const expectedShortLaTeXOutput = `\documentclass[outline,short]{usafpaper}
+const expectedShortOutlineLaTeXOutput = `\documentclass[outline,short]{usafpaper}
 
 \usepackage[authordate,backend=biber]{biblatex-chicago}
 \addbibresource{references.bib}
@@ -142,7 +145,7 @@ const expectedShortLaTeXOutput = `\documentclass[outline,short]{usafpaper}
 \end{document}
 `
 
-const expectedBibTeXOutput = `
+const expectedOutlineBibTeXOutput = `
 @manual{cmos,
     title = {The Chicago Manual of Style},
     author = {University of Chicago},
@@ -152,11 +155,12 @@ const expectedBibTeXOutput = `
 	publisher = {University of Chicago Press},
 }
 
-@book(starship_troopers,
+@book{starship_troopers,
 	title = {Starship Troopers},
 	author = {Robert A. Heinlein},
 	date = {1959},
 	publisher = {G.P. Putnam and Sons},
+}
 `
 
 func generateExpectedLongOutline() *Outline {
@@ -290,6 +294,66 @@ func generateExpectedShortOutline() *Outline {
 	return outline
 }
 
+func TestOutlineImplementsInterfaces(t *testing.T) {
+	var _ Paper = (*Outline)(nil)
+	var _ Point = (*OPoint)(nil)
+}
+
+func TestSampleOutlinesCompile(t *testing.T) {
+	if testing.Short() {
+		t.Skip()
+	}
+
+	so := latex.LaTeXString(expectedShortOutlineLaTeXOutput)
+	lo := latex.LaTeXString(expectedLongOutlineLaTeXOutput)
+
+	cwd, err := os.Getwd()
+	assert.NoError(t, err)
+	projDir := filepath.Join(cwd, "..", "..")
+
+	clsDir := files.NewDirectory(filepath.Join(projDir, "assets", "ag7if-tex", "cls"))
+	styDir := files.NewDirectory(filepath.Join(projDir, "assets", "ag7if-tex", "sty"))
+
+	usafpaper, err := clsDir.NewFile("usafpaper.cls")
+	assert.NoError(t, err)
+
+	usafpub, err := styDir.NewFile("usafpub.sty")
+	assert.NoError(t, err)
+
+	assets := []files.File{usafpaper, usafpub}
+
+	cacheDir := files.NewDirectory(filepath.Join(projDir, "test", "cache"))
+	dataDir := files.NewDirectory(filepath.Join(projDir, "test", "data"))
+
+	soOut, err := dataDir.NewFile("sample_short_outline.pdf")
+	assert.NoError(t, err)
+
+	loOut, err := dataDir.NewFile("sample_outline.pdf")
+	assert.NoError(t, err)
+
+	c := latex.NewCompiler(latex.XeLaTeX, latex.Biber, *cacheDir)
+	ref, err := cacheDir.CreateFile("references.bib")
+	assert.NoError(t, err)
+	err = ref.WriteString(expectedOutlineBibTeXOutput)
+	assert.NoError(t, err)
+	err = c.GenerateLaTeX(so, soOut, assets)
+	assert.NoError(t, err)
+	err = c.CompileLaTeX(soOut)
+	assert.NoError(t, err)
+	assert.FileExists(t, soOut.FullPath())
+	err = soOut.Remove()
+	assert.NoError(t, err)
+
+	c = latex.NewCompiler(latex.XeLaTeX, latex.NoBib, *cacheDir)
+	err = c.GenerateLaTeX(lo, loOut, assets)
+	assert.NoError(t, err)
+	err = c.CompileLaTeX(loOut)
+	assert.NoError(t, err)
+	assert.FileExists(t, loOut.FullPath())
+	err = loOut.Remove()
+	assert.NoError(t, err)
+}
+
 func TestParseOutline_Long(t *testing.T) {
 	expected := generateExpectedLongOutline()
 
@@ -322,7 +386,7 @@ func TestOutlineLaTeX(t *testing.T) {
 	assert.NoError(t, err)
 
 	longTeX := long.LaTeX()
-	assert.Equal(t, expectedLongLaTeXOutput, longTeX)
+	assert.Equal(t, expectedLongOutlineLaTeXOutput, longTeX)
 
 	fShortIn, err := files.NewFile("../../test/data/sample_short_outline.pmd")
 	assert.NoError(t, err)
@@ -331,10 +395,10 @@ func TestOutlineLaTeX(t *testing.T) {
 	assert.NoError(t, err)
 
 	shortTeX := short.LaTeX()
-	assert.Equal(t, expectedShortLaTeXOutput, shortTeX)
+	assert.Equal(t, expectedShortOutlineLaTeXOutput, shortTeX)
 }
 
-func TestBibliography(t *testing.T) {
+func TestOutlineBibliography(t *testing.T) {
 	fShortIn, err := files.NewFile("../../test/data/sample_short_outline.pmd")
 	assert.NoError(t, err)
 

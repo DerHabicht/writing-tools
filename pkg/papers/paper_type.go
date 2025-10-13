@@ -9,16 +9,19 @@ import (
 type PT int
 
 const (
-	TalkingPaper PT = iota
+	PointPaper PT = iota
+	TalkingPaper
 	BulletBackgroundPaper
 	OutlinePaper
 )
 
 func ParsePT(s string) (PT, error) {
 	switch strings.TrimSpace(strings.ToLower(s)) {
+	case "point":
+		return PointPaper, nil
 	case "talking":
 		return TalkingPaper, nil
-	case "bullet":
+	case "bullet-background":
 		return BulletBackgroundPaper, nil
 	case "outline":
 		return OutlinePaper, nil
@@ -29,10 +32,12 @@ func ParsePT(s string) (PT, error) {
 
 func (p PT) String() string {
 	switch p {
+	case PointPaper:
+		return "point"
 	case TalkingPaper:
 		return "talking"
 	case BulletBackgroundPaper:
-		return "bullet"
+		return "bullet-background"
 	case OutlinePaper:
 		return "outline"
 	default:

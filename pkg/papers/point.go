@@ -5,4 +5,5 @@ type Point interface {
 	Level() int
 	Text() string
 	Subpoints() []Point
+	RenderLaTeX() string
 }

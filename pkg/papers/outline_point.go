@@ -4,6 +4,8 @@ import (
 	"strings"
 
 	"github.com/pkg/errors"
+	"github.com/yuin/goldmark"
+	"github.com/yuin/goldmark/extension"
 )
 
 var Short = false
@@ -21,6 +23,10 @@ func NewOPoint(level int, text string) *OPoint {
 	}
 }
 
+func (o *OPoint) AddSubpoints(sp ...*OPoint) {
+	o.subpoints = append(o.subpoints, sp...)
+}
+
 func (o *OPoint) PTT() PTT {
 	return OutlinePoint
 }
@@ -33,10 +39,6 @@ func (o *OPoint) Text() string {
 	return o.text
 }
 
-func (o *OPoint) AddSubpoints(n ...*OPoint) {
-	o.subpoints = append(o.subpoints, n...)
-}
-
 func (o *OPoint) Subpoints() []Point {
 	var sp []Point
 
@@ -45,6 +47,17 @@ func (o *OPoint) Subpoints() []Point {
 	}
 
 	return sp
+}
+
+func (o *OPoint) RenderLaTeX() string {
+	md := goldmark.New(
+			goldmark.WithRenderer()
+          goldmark.WithExtensions(extension.GFM),
+      )
+var buf bytes.Buffer
+if err := md.Convert(source, &buf); err != nil {
+    panic(err)
+}
 }
 
 func chompLines(lines []string) []string {
@@ -71,7 +84,7 @@ func isShort(line string) (bool, error) {
 	return false, errors.Errorf("invalid first line of outline: %s", line)
 }
 
-func parseLine(lines []string, level int, short bool) (*OPoint, []string, error) {
+func parseOutlineLine(lines []string, level int, short bool) (*OPoint, []string, error) {
 	var text string
 	var subpoints []*OPoint
 
@@ -94,7 +107,7 @@ func parseLine(lines []string, level int, short bool) (*OPoint, []string, error)
 			text = lvlRe(level, short).ReplaceAllString(line, "")
 			lines = lines[1:]
 		} else if l == level+1 {
-			p, lns, err := parseLine(lines, level+1, short)
+			p, lns, err := parseOutlineLine(lines, level+1, short)
 			if err != nil {
 				return nil, nil, errors.WithStack(err)
 			}
@@ -132,7 +145,7 @@ func ParseOutlinePoints(lines []string) ([]*OPoint, bool, error) {
 	var points []*OPoint
 
 	for len(lines) > 0 {
-		point, l, err := parseLine(lines, 0, short)
+		point, l, err := parseOutlineLine(lines, 0, short)
 		if err != nil {
 			return nil, false, errors.WithStack(err)
 		}
