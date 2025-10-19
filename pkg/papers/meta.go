@@ -6,7 +6,6 @@ import (
 )
 
 type PaperMeta struct {
-	PaperType PT        `yaml:"type"`
 	Title     string    `yaml:"title"`
 	Author    string    `yaml:"author"`
 	Office    string    `yaml:"office"`

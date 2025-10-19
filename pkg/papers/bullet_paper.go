@@ -5,11 +5,21 @@ import (
 )
 
 type BulletPaper struct {
-	meta PaperMeta
+	paperType PT
+	meta      PaperMeta
+	sections  []*Section
+}
+
+func NewBulletPaper(pt PT, meta PaperMeta, sections []*Section) *BulletPaper {
+	return &BulletPaper{
+		paperType: pt,
+		meta: meta,
+		sections: sections,
+	}
 }
 
 func (b *BulletPaper) PT() PT {
-	return b.meta.PaperType
+	return b.paperType
 }
 
 func (b *BulletPaper) Title() string {
@@ -32,17 +42,6 @@ func (b *BulletPaper) Date() date.Date {
 	return b.meta.Date
 }
 
-func (b *BulletPaper) Parse(raw []byte) error {
-	//TODO implement me
-	panic("implement me")
-}
-
-func (b *BulletPaper) Points() []Point {
-	//TODO implement me
-	panic("implement me")
-}
-
-func (b *BulletPaper) LaTeX() string {
-	//TODO implement me
-	panic("implement me")
+func (b *BulletPaper) Sections() []*Section {
+	return b.sections
 }

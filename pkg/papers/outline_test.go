@@ -1,4 +1,4 @@
-package papers
+package papers_test
 
 import (
 	"os"
@@ -8,8 +8,10 @@ import (
 	"github.com/ag7if/go-files"
 	"github.com/ag7if/go-latex"
 	"github.com/stretchr/testify/assert"
-	"github.com/yuin/goldmark/ast"
-	"github.com/yuin/goldmark/parser"
+
+	ipapers "github.com/derhabicht/writing-tools/internal/papers"
+	ppapers "github.com/derhabicht/writing-tools/pkg/papers"
+
 )
 
 const expectedLongOutlineLaTeXOutput = `\documentclass[outline]{usafpaper}
@@ -164,18 +166,16 @@ const expectedOutlineBibTeXOutput = `
 }
 `
 
-func generateExpectedLongOutline() *Outline {
+func generateExpectedLongOutline() *ppapers.Outline {
 	panic("rewrite me")
 }
 
-func generateExpectedShortOutline() *Outline {
+func generateExpectedShortOutline() *ppapers.Outline {
 	panic("rewrite me")
 }
 
 func TestOutlineImplementsInterfaces(t *testing.T) {
-	var _ Paper = (*Outline)(nil)
-
-	var _ Point = (*OPoint)(nil)
+	var _ ppapers.Paper = (*ppapers.Outline)(nil)
 }
 
 func TestSampleOutlinesCompile(t *testing.T) {
@@ -235,36 +235,12 @@ func TestSampleOutlinesCompile(t *testing.T) {
 	assert.NoError(t, err)
 }
 
-func TestParseOutline_Long(t *testing.T) {
-	expected := generateExpectedLongOutline()
-
-	f, err := files.NewFile("../../test/data/sample_outline.pmd")
-	assert.NoError(t, err)
-
-	outline, err := ParseFromFile(f)
-	assert.NoError(t, err)
-
-	assert.Equal(t, expected, outline)
-}
-
-func TestParseOutline_Short(t *testing.T) {
-	expected := generateExpectedShortOutline()
-
-	f, err := files.NewFile("../../test/data/sample_short_outline.pmd")
-	assert.NoError(t, err)
-
-	outline, err := ParseFromFile(f)
-	assert.NoError(t, err)
-
-	assert.Equal(t, expected, outline)
-}
-
 func TestOutlineLaTeX(t *testing.T) {
 	t.Skip()
 	fLongIn, err := files.NewFile("../../test/data/sample_outline.pmd")
 	assert.NoError(t, err)
 
-	long, err := ParseFromFile(fLongIn)
+	long, err := ipapers.ParseFromFile(fLongIn)
 	assert.NoError(t, err)
 
 	longTeX := long.LaTeX()
@@ -273,7 +249,7 @@ func TestOutlineLaTeX(t *testing.T) {
 	fShortIn, err := files.NewFile("../../test/data/sample_short_outline.pmd")
 	assert.NoError(t, err)
 
-	short, err := ParseFromFile(fShortIn)
+	short, err := ipapers.ParseFromFile(fShortIn)
 	assert.NoError(t, err)
 
 	shortTeX := short.LaTeX()
@@ -284,7 +260,7 @@ func TestBibliography(t *testing.T) {
 	fShortIn, err := files.NewFile("../../test/data/sample_short_outline.pmd")
 	assert.NoError(t, err)
 
-	short, err := ParseFromFile(fShortIn)
+	short, err := ipapers.ParseFromFile(fShortIn)
 	assert.NoError(t, err)
 
 	shortO, ok := short.(*Outline)
