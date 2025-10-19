@@ -1,0 +1,3 @@
+[submodule "assets/ag7if-tex"]
+	path = assets/ag7if-tex
+	url = git@github.com:derhabicht/ag7if-tex.git
