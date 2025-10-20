@@ -5,8 +5,8 @@ import (
 )
 
 type Paper interface {
-	// PT returns the paper type
-	PT() PT
+	// PaperType returns the paper type
+	PaperType() PT
 
 	// Title returns the title of this paper
 	Title() string

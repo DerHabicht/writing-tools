@@ -54,9 +54,29 @@ func (p *PT) UnmarshalYAML(b []byte) error {
 	return nil
 }
 
-type PTT int
+type LT int
 
 const (
-	BulletPoint PTT = iota
-	OutlinePoint
+	EnumeratedList LT = iota
+	ItemizedList
+	UsafEnumeratedList
+	UsafItemizedList
+	OutlineList
 )
+
+func (lt LT) RenderLaTeX() []byte {
+	switch lt {
+	case EnumeratedList:
+		return []byte("enumerate")
+	case ItemizedList:
+		return []byte("itemize")
+	case UsafEnumeratedList:
+		return []byte("usafenum")
+	case UsafItemizedList:
+		return []byte("usafitem")
+	case OutlineList:
+		return []byte("outline")
+	default:
+		panic(errors.Errorf("invalid list type value: %d", lt))
+	}
+}

@@ -166,16 +166,60 @@ const expectedOutlineBibTeXOutput = `
 }
 `
 
-func generateExpectedLongOutline() *ppapers.Outline {
-	panic("rewrite me")
+func generateExpectedLongOutline() *ppapers.BulletPaper {
+	pl := ppapers.NewBPointList(
+		ppapers.OutlineList,
+		0,
+		ppapers.NewBPoint("Historical Introduction", nil),
+		ppapers.NewBPoint(
+			"Dentition in various groups of vertebrates",
+			ppapers.NewBPointList(
+				ppapers.OutlineList,
+				1,
+				ppapers.NewBPoint(
+					"Reptilia",
+					ppapers.NewBPointList(
+						ppapers.OutlineList,
+						2,
+						ppapers.NewBPoint("Histology and development of reptilian teeth", nil),
+						ppapers.NewBPoint("Survey of forms", nil),
+					),
+				),
+				ppapers.NewBPoint(
+					"Mammalia",
+					ppapers.NewBPointList(
+						ppapers.OutlineList,
+						2,
+						ppapers.NewBPoint("Histology and development of mammalian teeth", nil),
+						ppapers.NewBPoint(
+							"Survey of forms", 
+							3,
+							ppapers.NewBPoint(
+								"Primates",
+								ppapers.NewBPointList(
+									ppapers.OutlineList,
+									4,
+									ppapers.NewBPoint("Lemuroidea", nil),
+									ppapers.NewBPoint(
+										"Anthropoidea",
+										ppapers.NewBPointList(
+											ppapers.OutlineList,
+											5,
+											
+										)
+									)
+								)
+							)
+						),
+					),
+				),
+			),
+		),
+	)
 }
 
-func generateExpectedShortOutline() *ppapers.Outline {
+func generateExpectedShortOutline() *ppapers.BulletPaper {
 	panic("rewrite me")
-}
-
-func TestOutlineImplementsInterfaces(t *testing.T) {
-	var _ ppapers.Paper = (*ppapers.Outline)(nil)
 }
 
 func TestSampleOutlinesCompile(t *testing.T) {

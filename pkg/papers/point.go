@@ -1,16 +1,21 @@
 package papers
 
-type Point interface {
-	// PTT returns the point type (bullet or outline point).
-	PTT() PTT
-	
-	// Level returns the nesting level of this point in the tree.
+type PointList interface {
+	ListType() LT
+
 	Level() int
-	
+
+	Points() []Point
+
+	// RenderLaTeX this list (and its points) as a 
+	RenderLaTeX() []byte
+}
+
+type Point interface {
 	// RenderLaTeX renders this point as a LaTeX fragment.
 	// This implements the LaTeXRenderer interface.
 	RenderLaTeX() []byte
 
 	// Subpoints returns all children nodes as points.
-	Subpoints() []Point
+	Subpoints() PointList
 }

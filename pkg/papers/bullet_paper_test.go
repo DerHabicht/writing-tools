@@ -7,5 +7,5 @@ import (
 )
 
 func TestBulletPaperImplementsInterfaces(t *testing.T) {
-	var _ ppapers.Paper = (*ppapers.Outline)(nil)
+	var _ ppapers.Paper = (*ppapers.BulletPaper)(nil)
 }
