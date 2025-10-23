@@ -1,5 +1,7 @@
 package main
 
+/*
+
 import (
 	"fmt"
 
@@ -8,7 +10,7 @@ import (
 
 // BaseVersion is the SemVer-formatted string that defines the current version of metoc.
 // Build information will be added at compile-time.
-const BaseVersion = "0.1.1"
+const BaseVersion = "0.2.0-indev"
 
 // BuildTime is a timestamp of when the build is run. This variable is set at compile-time.
 var BuildTime string
@@ -30,3 +32,4 @@ func main() {
 	)
 	papers.Execute(version)
 }
+*/

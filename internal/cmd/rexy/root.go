@@ -1,4 +1,6 @@
-package papers
+package rexy
+
+/*
 
 import (
 	"fmt"
@@ -16,7 +18,7 @@ var logLevel string
 
 // TODO: Consider breaking this out into subcommands for compiling PDFs and generating BibTeX files.
 var rootCmd = &cobra.Command{
-	Use:   "papers <paper.omd> <output.pdf>",
+	Use:   "rexy <paper.omd> <output.pdf>",
 	Short: "Generate outlines, talking, and bullet background papers from special markdown files.",
 	Long:  ``,
 	Args:  cobra.RangeArgs(1, 2),
@@ -58,3 +60,4 @@ func init() {
 
 	logging.InitLogging(logLevel, true)
 }
+*/

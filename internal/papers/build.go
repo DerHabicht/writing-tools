@@ -1,4 +1,5 @@
 package papers
+/*
 
 import (
 	"github.com/ag7if/go-files"
@@ -7,7 +8,7 @@ import (
 
 	"github.com/derhabicht/writing-tools/internal/config"
 	"github.com/derhabicht/writing-tools/internal/logging"
-	"github.com/derhabicht/writing-tools/pkg/papers"
+	"github.com/derhabicht/writing-tools/pkg/documents"
 )
 
 func configureLaTeXCompiler(logger logging.Logger) (*latex.Compiler, error) {
@@ -73,3 +74,4 @@ func BuildPaper(input, output files.File, logger logging.Logger) error {
 
 	return nil
 }
+*/

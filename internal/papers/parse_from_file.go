@@ -1,5 +1,6 @@
 package papers
 
+/*
 import (
 	"bytes"
 	"regexp"
@@ -57,3 +58,4 @@ func ParseFromFile(file files.File) (Paper, error) {
 		panic(errors.Errorf("invalid paper type: %v", pm.PaperType))
 	}
 }
+*/

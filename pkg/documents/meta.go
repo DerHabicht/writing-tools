@@ -1,9 +1,15 @@
-package papers
+package documents
 
 import (
 	"github.com/fxtlabs/date"
 
 )
+
+type DocMeta interface {
+	DocType() DocType
+	LaTeX() []byte
+	BibTeX() []byte
+}
 
 type PaperMeta struct {
 	Title     string    `yaml:"title"`

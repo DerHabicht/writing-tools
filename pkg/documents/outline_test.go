@@ -1,4 +1,6 @@
-package papers_test
+package documents
+
+/*
 
 import (
 	"os"
@@ -10,8 +12,6 @@ import (
 	"github.com/stretchr/testify/assert"
 
 	ipapers "github.com/derhabicht/writing-tools/internal/papers"
-	ppapers "github.com/derhabicht/writing-tools/pkg/papers"
-
 )
 
 const expectedLongOutlineLaTeXOutput = `\documentclass[outline]{usafpaper}
@@ -167,55 +167,7 @@ const expectedOutlineBibTeXOutput = `
 `
 
 func generateExpectedLongOutline() *ppapers.BulletPaper {
-	pl := ppapers.NewBPointList(
-		ppapers.OutlineList,
-		0,
-		ppapers.NewBPoint("Historical Introduction", nil),
-		ppapers.NewBPoint(
-			"Dentition in various groups of vertebrates",
-			ppapers.NewBPointList(
-				ppapers.OutlineList,
-				1,
-				ppapers.NewBPoint(
-					"Reptilia",
-					ppapers.NewBPointList(
-						ppapers.OutlineList,
-						2,
-						ppapers.NewBPoint("Histology and development of reptilian teeth", nil),
-						ppapers.NewBPoint("Survey of forms", nil),
-					),
-				),
-				ppapers.NewBPoint(
-					"Mammalia",
-					ppapers.NewBPointList(
-						ppapers.OutlineList,
-						2,
-						ppapers.NewBPoint("Histology and development of mammalian teeth", nil),
-						ppapers.NewBPoint(
-							"Survey of forms", 
-							3,
-							ppapers.NewBPoint(
-								"Primates",
-								ppapers.NewBPointList(
-									ppapers.OutlineList,
-									4,
-									ppapers.NewBPoint("Lemuroidea", nil),
-									ppapers.NewBPoint(
-										"Anthropoidea",
-										ppapers.NewBPointList(
-											ppapers.OutlineList,
-											5,
-											
-										)
-									)
-								)
-							)
-						),
-					),
-				),
-			),
-		),
-	)
+	panic("rewrite me")
 }
 
 func generateExpectedShortOutline() *ppapers.BulletPaper {
@@ -326,3 +278,4 @@ func TestBibliography(t *testing.T) {
 	assert.Regexp(t, `    date = \{1959\},`, bibtex)
 	assert.Regexp(t, `    publisher = \{G. P. Putnam's Sons\},`, bibtex)
 }
+*/
