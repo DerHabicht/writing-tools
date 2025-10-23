@@ -1,0 +1,59 @@
+authors:
+  chw:
+    full_name: Charlotte Herwig Winter
+  ffj:
+    full_name: Friedemann Fritzi Jäger
+  fkg:
+    full_name: Felizitas Karina Giese
+  mbg:
+    full_name: Margarete Bernadette Gottschalk
+  mhh:
+    full_name: Marlene Herta Hersch
+changes:
+  - type: draft # v0.1.0
+    date: 2025-01-01
+    authors:
+      - fkg
+    changes:
+      - Initial draft
+  - type: patch # v0.1.1
+    date: 2025-01-02
+    authors:
+      - fkg
+      - ffj
+    changes:
+      - Grammar fixes
+  - type: draft # v0.2.0
+    date: 2025-01-05
+    authors:
+      - mhh
+    changes:
+      - Added section on the Whichness of What
+      - Corrected factual inconsistencies on Wool Gathering
+  - type: draft # v0.3.0
+    date: 2025-01-10
+    authors:
+      - fkg
+      - ffj
+      - mhh
+    changes:
+      - Overhaul of 
+  - type: major # v1.0.0
+    date: 2025-01-15
+    authors:
+      - chw
+      - fkg
+      - ffj
+  - type: minor # v1.1.0
+    date: 2025-03-01
+    authors:
+      - chw
+  - type: draft # v2.0.0-draft.1.0
+    date: 2025-06-01
+    authors:
+      - mbg
+  - type: patch # v2.0.0-draft.1.1
+    date: 2025-06-05
+    authors:
+      - fkg
+      - ffj

@@ -7,45 +7,45 @@ contact: (555) 555-1234
 typist: cmos
 date: 2017-01-01
 comment: Sample short outline found on p. 415 of CMOS 17.
----
-cmos:
-    type: manual
-    title: The Chicago Manual of Style
-    author: University of Chicago
-    date: 2017
-    bibdata:
-        organization: University of Chicago
-        publisher: University of Chicago Press
-        address: Chicago, IL
-    notes:
-        -   citation: p. 416
-            quote: >-
-                In a list with fewer levels, one might dispense with the capital roman numerals and capital letters and
-                instead begin with arabic numerals. What is important is that readers see at a glance the level to which
-                each item belongs. Note that each division and subdivision should normally contain at least two items.
-            remarks:
-                - This means "short" outlines should be supported
-                - Short papers start with arabic numerals instead of capital roman numerals
-starship_troopers:
-    type: book
-    title: Starship Troopers
-    author: Robert A. Heinlein
-    date: 1959
-    bibdata:
-        publisher: G. P. Putnam's Sons
-    notes:
-        -   citation: ch. 2
-            quote: >-
-                Anyone who clings to the historically untrue---and thoroughly immoral---doctrine that 'violence never
-                settles anything' I would advise to conjure up the ghosts of Napoleon Bonaparte and of the Duke of
-                Wellington and let them debate it. The ghost of Hitler could referee, and the jury might well be the
-                Dodo, the Great Auk, and the Passenger Pigeon. Violence, naked force, has settled more issues in
-                history than has any other factor, and the contrary opinion is wishful thinking at its worst. Breeds
-                that forget this basic truth have always paid for it with their lives and freedoms.
-        -   citation: ch. 12
-            quote: >-
-                Morals---all correct moral laws---derive from the instinct to survive. Moral behavior is survival
-                behavior above the individual level.
+references:
+    cmos:
+        bibdata:
+            type: manual
+            title: The Chicago Manual of Style
+            author: University of Chicago
+            date: 2017
+            organization: University of Chicago
+            publisher: University of Chicago Press
+            address: Chicago, IL
+        notes:
+            -   citation: p. 416
+                quote: >-
+                    In a list with fewer levels, one might dispense with the capital roman numerals and capital letters and
+                    instead begin with arabic numerals. What is important is that readers see at a glance the level to which
+                    each item belongs. Note that each division and subdivision should normally contain at least two items.
+                remarks:
+                    - This means "short" outlines should be supported
+                    - Short papers start with arabic numerals instead of capital roman numerals
+    starship_troopers:
+        bibdata:
+            type: book
+            title: Starship Troopers
+            author: Robert A. Heinlein
+            date: 1959
+            publisher: G. P. Putnam's Sons
+        notes:
+            -   citation: ch. 2
+                quote: >-
+                    Anyone who clings to the historically untrue---and thoroughly immoral---doctrine that 'violence never
+                    settles anything' I would advise to conjure up the ghosts of Napoleon Bonaparte and of the Duke of
+                    Wellington and let them debate it. The ghost of Hitler could referee, and the jury might well be the
+                    Dodo, the Great Auk, and the Passenger Pigeon. Violence, naked force, has settled more issues in
+                    history than has any other factor, and the contrary opinion is wishful thinking at its worst. Breeds
+                    that forget this basic truth have always paid for it with their lives and freedoms.
+            -   citation: ch. 12
+                quote: >-
+                    Morals---all correct moral laws---derive from the instinct to survive. Moral behavior is survival
+                    behavior above the individual level.
 ---
 
 1. Punctuation

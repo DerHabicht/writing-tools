@@ -3,6 +3,7 @@ module github.com/derhabicht/writing-tools
 go 1.24.4
 
 require (
+	github.com/Masterminds/semver/v3 v3.4.0
 	github.com/ag7if/go-files v0.9.0
 	github.com/fxtlabs/date v0.0.0-20150819233934-d9ab6e2a88a9
 	github.com/goccy/go-yaml v1.18.0

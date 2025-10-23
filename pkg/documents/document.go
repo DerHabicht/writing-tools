@@ -1,8 +1,8 @@
 package documents
 
 type Document interface {
-	//
-	Meta() 
+	// 
+	Meta() DocMeta
 
 	// LaTeX implements the LaTeXer interface from github.com/ag7if/go-latex
 	LaTeX() []byte
